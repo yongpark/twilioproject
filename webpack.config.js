@@ -18,11 +18,21 @@ module.exports = {
         }
       },
       {
+        test: /\.css$/,
+        use: [
+          { loader: "style-loader" },
+          { loader: "css-loader", query: { modules: true } }
+        ]
+      },
+      {
         test: /\.scss$/,
         use: [{
             loader: "style-loader" // creates style nodes from JS strings
         }, {
-            loader: "css-loader" // translates CSS into CommonJS
+            loader: "css-loader", // translates CSS into CommonJS
+            query: {
+              modules: true
+            }
         }, {
             loader: "sass-loader" // compiles Sass to CSS
         }]

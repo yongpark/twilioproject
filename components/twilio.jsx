@@ -1,7 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
+
 import styles from '../assets/styles.scss';
+import coolStyle from '../assets/test_file.css';
+
+setTimeout(function () {
+  console.log(styles);
+  console.log(coolStyle);
+}, 5000);
 
 
 
@@ -15,6 +22,8 @@ class Twilio extends React.Component {
     };
   }
   render(){
+    console.log(styles);
+    console.log(coolStyle);
     return(
       <div className='app-container'>
         <h1>
