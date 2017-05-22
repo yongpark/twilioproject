@@ -4,5 +4,5 @@ import Twilio from './twilio';
 
 document.addEventListener("DOMContentLoaded", () => {
 	const root = document.getElementById("root");
-	ReactDOM.render(<Congrats/>, root);
+	ReactDOM.render(<Twilio/>, root);
 });
