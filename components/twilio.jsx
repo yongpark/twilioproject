@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
-import "~bootstrap/dist/css/bootstrap";
+import styles from '../assets/styles.scss';
+
 
 
 class Twilio extends React.Component {
@@ -23,7 +24,7 @@ class Twilio extends React.Component {
           Phone
           <div className='phone-top-portion'>
           </div>
-          <ul className={styles.phone-first-row}>
+          <ul className={styles.phoneFirstRow}>
             <li className='phone-number'>
               1
             </li>
