@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
+import "~bootstrap/dist/css/bootstrap";
+
 
 class Twilio extends React.Component {
   constructor(props){
@@ -20,19 +22,41 @@ class Twilio extends React.Component {
         <div className='phone'>
           Phone
           <div className='phone-top-portion'>
-
           </div>
-          <ul className='phone-first-row'>
-
+          <ul className={styles.phone-first-row}>
+            <li className='phone-number'>
+              1
+            </li>
+            <li className='phone-number'>
+              2
+            </li>
+            <li className='phone-number'>
+              3
+            </li>
           </ul>
           <ul className='phone-second-row'>
-
+            <li className='phone-number'>
+              4
+            </li>
+            <li className='phone-number'>
+              5
+            </li>
+            <li className='phone-number'>
+              6
+            </li>
           </ul>
           <ul className='phone-third-row'>
-
+            <li className='phone-number'>
+              7
+            </li>
+            <li className='phone-number'>
+              8
+            </li>
+            <li className='phone-number'>
+              9
+            </li>
           </ul>
           <div className='phone-bottomportion'>
-
           </div>
         </div>
         <div className='message-input-containor'>
