@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
-import express from 'express';
+
 
 import styles from '../assets/styles.scss';
 import coolStyle from '../assets/test_file.css';
@@ -20,47 +20,43 @@ class Twilio extends React.Component {
       phoneNumber: '',
       message: '',
       date: null,
+      time: null,
+    };
+    this.updateDate = this.updateDate.bind(this);
+    this.updateNumber = this.updateNumber.bind(this);
+    this.updateTime = this.updateTime.bind(this);
+    this.twilioCall = this.twilioCall.bind(this);
+  }
+
+  updateNumber(){
+    return e => {
+      const number = e.target.value;
+      this.setState({phoneNumber: number});
+      console.log(this.state);
     };
   }
 
-  buildResponse(){
-    const VoiceResponse = require('twilio').twiml.VoiceResponse;
-    const urlencoded = require('body-parser').urlencoded;
+  updateDate(){
+    return e => {
+      const date = new Date(e.target.value);
+      this.setState({date: date});
+      console.log(this.state);
+    };
+  }
 
-    const app = express();
-
-    // Parse incoming POST params with Express middleware
-    app.use(urlencoded({extended: false}));
-
-    // Create a route that will handle Twilio webhook requests, sent as an
-    // HTTP POST to /voice in our application
-    app.post('/voice', (request, response) => {
-      // Get information about the incoming call, like the city associated
-      // with the phone number (if Twilio can discover it)
-      const city = request.body.FromCity;
-
-      // Use the Twilio Node.js SDK to build an XML response
-      //edit for user input
-      const twiml = new VoiceResponse();
-      twiml.say({voice: 'alice'},
-        `Never gonna give you up ${city}.`
-      );
-      twiml.play({}, 'https://demo.twilio.com/docs/classic.mp3');
-
-      // Render the response as XML in reply to the webhook request
-      response.type('text/xml');
-      response.send(twiml.toString());
-    });
-
-    // Create an HTTP server and listen for requests on port 3000
-    app.listen(3000);
+  updateTime(){
+    return e => {
+      const time = e.target.value;
+      this.setState({time: time});
+      console.log(this.state);
+    };
   }
 
   twilioCall(){
+    //TwilioAPICall
     const accountSid = 'AC2a030dd4c2eefc7ace3f2f9c63495c74';
     const authToken = '5d5a3358a582439bac75aa3ac3c97e95';
     const client = require('twilio')(accountSid, authToken);
-    //TwilioAPICall
     client.calls
       .create({
         url: 'http://demo.twilio.com/docs/voice.xml',
@@ -71,8 +67,6 @@ class Twilio extends React.Component {
   }
 
 
-
-
   render(){
     return(
       <div className='appContainer'>
@@ -80,7 +74,7 @@ class Twilio extends React.Component {
           Send yourself a wake up call!
         </h1>
         <div>
-          <input type='tel' value='' className="telephoneInput" placeholder='111-222-3333'/>
+          <input type='tel' value={this.state.phoneNumber} className="telephoneInput" placeholder='111-222-3333' onChange={this.updateNumber}/>
         </div>
         <ul className={styles.phoneFirstRow}>
             <button className={styles.phoneNumber}>
@@ -122,8 +116,8 @@ class Twilio extends React.Component {
           <textarea className='messageInputArea'/>
         </div>
         <div className='alarmTimerContainer'>
-           <input type="time"/>
-           <input type='datepicker'/>
+           <input type="time" onChange={this.updateTime}/>
+           <input type='datepicker' onChange={this.upateDate}/>
         </div>
         <input type='submit'/>
       </div>
