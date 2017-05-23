@@ -25580,11 +25580,9 @@ var Twilio = function (_React$Component) {
   _createClass(Twilio, [{
     key: 'render',
     value: function render() {
-      console.log(_styles2.default);
-      console.log(_test_file2.default);
       return _react2.default.createElement(
         'div',
-        { className: 'app-container' },
+        { className: 'appContainer' },
         _react2.default.createElement(
           'h1',
           null,
@@ -25594,79 +25592,79 @@ var Twilio = function (_React$Component) {
           'div',
           { className: 'phone' },
           'Phone',
-          _react2.default.createElement('div', { className: 'phone-top-portion' }),
+          _react2.default.createElement('div', { className: 'phoneTopPortion' }),
           _react2.default.createElement(
             'ul',
             { className: _styles2.default.phoneFirstRow },
             _react2.default.createElement(
               'li',
-              { className: 'phone-number' },
+              { className: 'phoneNumber' },
               '1'
             ),
             _react2.default.createElement(
               'li',
-              { className: 'phone-number' },
+              { className: 'phoneNumber' },
               '2'
             ),
             _react2.default.createElement(
               'li',
-              { className: 'phone-number' },
+              { className: 'phoneNumber' },
               '3'
             )
           ),
           _react2.default.createElement(
             'ul',
-            { className: 'phone-second-row' },
+            { className: 'phoneSecondRow' },
             _react2.default.createElement(
               'li',
-              { className: 'phone-number' },
+              { className: 'phoneNumber' },
               '4'
             ),
             _react2.default.createElement(
               'li',
-              { className: 'phone-number' },
+              { className: 'phoneNumber' },
               '5'
             ),
             _react2.default.createElement(
               'li',
-              { className: 'phone-number' },
+              { className: 'phoneNumber' },
               '6'
             )
           ),
           _react2.default.createElement(
             'ul',
-            { className: 'phone-third-row' },
+            { className: 'phoneThirdRow' },
             _react2.default.createElement(
               'li',
-              { className: 'phone-number' },
+              { className: 'phoneNumber' },
               '7'
             ),
             _react2.default.createElement(
               'li',
-              { className: 'phone-number' },
+              { className: 'phoneNumber' },
               '8'
             ),
             _react2.default.createElement(
               'li',
-              { className: 'phone-number' },
+              { className: 'phoneNumber' },
               '9'
             )
           ),
-          _react2.default.createElement('div', { className: 'phone-bottomportion' })
+          _react2.default.createElement('div', { className: 'phoneBottomPortion' })
         ),
         _react2.default.createElement(
           'div',
-          { className: 'message-input-containor' },
+          { className: 'messageInputContainer' },
           _react2.default.createElement(
             'h3',
             null,
             'Enter Message'
           ),
-          _react2.default.createElement('textarea', { className: 'message-input-area' })
+          _react2.default.createElement('textarea', { className: 'messageInputArea' })
         ),
         _react2.default.createElement(
           'div',
-          { className: 'alarm-timer-containor' },
+          { className: 'alarmTimerContainer' },
           _react2.default.createElement('input', { type: 'time' }),
           _react2.default.createElement('input', { type: 'datepicker' })
         ),
@@ -25731,10 +25729,12 @@ exports = module.exports = __webpack_require__(53)(undefined);
 
 
 // module
-exports.push([module.i, "._3H9R1OaCl5Aee15TZVk-FK {\n  list-style: none; }\n", ""]);
+exports.push([module.i, "textarea:hover, input:hover, textarea:active, input:active, textarea:focus,\nbutton:focus, button:active, button:hover, label:focus, ._15KaYryrogMWjNI2ANas2R:active,\n._15KaYryrogMWjNI2ANas2R.tjaYqEdnWexfO8gS1K5NT {\n  outline: 0px !important;\n  -webkit-appearance: none; }\n\n._3H9R1OaCl5Aee15TZVk-FK {\n  list-style: none; }\n", ""]);
 
 // exports
 exports.locals = {
+	"btn": "_15KaYryrogMWjNI2ANas2R",
+	"active": "tjaYqEdnWexfO8gS1K5NT",
 	"phoneFirstRow": "_3H9R1OaCl5Aee15TZVk-FK"
 };
 

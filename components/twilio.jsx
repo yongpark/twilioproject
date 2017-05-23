@@ -22,60 +22,59 @@ class Twilio extends React.Component {
     };
   }
   render(){
-    console.log(styles);
-    console.log(coolStyle);
     return(
-      <div className='app-container'>
+      <div className='appContainer'>
         <h1>
           Send yourself a wake up call!
         </h1>
         <div className='phone'>
           Phone
-          <div className='phone-top-portion'>
+          <div className='phoneTopPortion'>
           </div>
           <ul className={styles.phoneFirstRow}>
-            <li className='phone-number'>
-              1
-            </li>
-            <li className='phone-number'>
-              2
-            </li>
-            <li className='phone-number'>
-              3
-            </li>
+
+              <li className='phoneNumber'>
+                1
+              </li>
+              <li className='phoneNumber'>
+                2
+              </li>
+              <li className='phoneNumber'>
+                3
+              </li>
           </ul>
-          <ul className='phone-second-row'>
-            <li className='phone-number'>
+          <ul className='phoneSecondRow'>
+            <li className='phoneNumber'>
               4
             </li>
-            <li className='phone-number'>
+            <li className='phoneNumber'>
               5
             </li>
-            <li className='phone-number'>
+            <li className='phoneNumber'>
               6
             </li>
           </ul>
-          <ul className='phone-third-row'>
-            <li className='phone-number'>
+          <ul className='phoneThirdRow'>
+            <li className='phoneNumber'>
               7
             </li>
-            <li className='phone-number'>
+            <li className='phoneNumber'>
               8
             </li>
-            <li className='phone-number'>
+            <li className='phoneNumber'>
               9
             </li>
           </ul>
-          <div className='phone-bottomportion'>
+          <div className='phoneBottomPortion'>
           </div>
         </div>
-        <div className='message-input-containor'>
+        <div className='messageInputContainer'>
           <h3>
             Enter Message
           </h3>
-          <textarea className='message-input-area'/>
+          <textarea className='messageInputArea'/>
         </div>
-        <div className='alarm-timer-containor'>
+        <div className='alarmTimerContainer'>
            <input type="time"/>
            <input type='datepicker'/>
         </div>
