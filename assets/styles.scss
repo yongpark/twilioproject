@@ -8,3 +8,12 @@ button:focus, button:active, button:hover, label:focus, .btn:active,
 .phoneFirstRow{
   list-style: none;
 }
+
+.phoneNumber{width: 49px;
+  height: 49px;
+  text-align: center;
+  padding: 5px 0;
+  font-size: 20px;
+  line-height: 2.00;
+  border-radius: 30px;
+}

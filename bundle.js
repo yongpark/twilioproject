@@ -25590,67 +25590,65 @@ var Twilio = function (_React$Component) {
         ),
         _react2.default.createElement(
           'div',
-          { className: 'phone' },
-          'Phone',
-          _react2.default.createElement('div', { className: 'phoneTopPortion' }),
+          null,
+          _react2.default.createElement('input', { type: 'tel', value: '', className: 'telephoneInput', placeholder: '111-222-3333' })
+        ),
+        _react2.default.createElement(
+          'ul',
+          { className: _styles2.default.phoneFirstRow },
           _react2.default.createElement(
-            'ul',
-            { className: _styles2.default.phoneFirstRow },
-            _react2.default.createElement(
-              'li',
-              { className: 'phoneNumber' },
-              '1'
-            ),
-            _react2.default.createElement(
-              'li',
-              { className: 'phoneNumber' },
-              '2'
-            ),
-            _react2.default.createElement(
-              'li',
-              { className: 'phoneNumber' },
-              '3'
-            )
+            'button',
+            { className: _styles2.default.phoneNumber },
+            '1'
           ),
           _react2.default.createElement(
-            'ul',
-            { className: 'phoneSecondRow' },
-            _react2.default.createElement(
-              'li',
-              { className: 'phoneNumber' },
-              '4'
-            ),
-            _react2.default.createElement(
-              'li',
-              { className: 'phoneNumber' },
-              '5'
-            ),
-            _react2.default.createElement(
-              'li',
-              { className: 'phoneNumber' },
-              '6'
-            )
+            'button',
+            { className: _styles2.default.phoneNumber },
+            '2'
           ),
           _react2.default.createElement(
-            'ul',
-            { className: 'phoneThirdRow' },
-            _react2.default.createElement(
-              'li',
-              { className: 'phoneNumber' },
-              '7'
-            ),
-            _react2.default.createElement(
-              'li',
-              { className: 'phoneNumber' },
-              '8'
-            ),
-            _react2.default.createElement(
-              'li',
-              { className: 'phoneNumber' },
-              '9'
-            )
+            'button',
+            { className: _styles2.default.phoneNumber },
+            '3'
+          )
+        ),
+        _react2.default.createElement(
+          'ul',
+          { className: _styles2.default.phoneSecondRow },
+          _react2.default.createElement(
+            'button',
+            { className: _styles2.default.phoneNumber },
+            '4'
           ),
-          _react2.default.createElement('div', { className: 'phoneBottomPortion' })
+          _react2.default.createElement(
+            'button',
+            { className: _styles2.default.phoneNumber },
+            '5'
+          ),
+          _react2.default.createElement(
+            'button',
+            { className: _styles2.default.phoneNumber },
+            '6'
+          )
+        ),
+        _react2.default.createElement(
+          'ul',
+          { className: _styles2.default.phoneThird },
+          _react2.default.createElement(
+            'button',
+            { className: _styles2.default.phoneNumber },
+            '7'
+          ),
+          _react2.default.createElement(
+            'button',
+            { className: _styles2.default.phoneNumber },
+            '8'
+          ),
+          _react2.default.createElement(
+            'button',
+            { className: _styles2.default.phoneNumber },
+            '9'
+          )
         ),
         _react2.default.createElement(
           'div',
@@ -25729,13 +25727,14 @@ exports = module.exports = __webpack_require__(53)(undefined);
 
 
 // module
-exports.push([module.i, "textarea:hover, input:hover, textarea:active, input:active, textarea:focus,\nbutton:focus, button:active, button:hover, label:focus, ._15KaYryrogMWjNI2ANas2R:active,\n._15KaYryrogMWjNI2ANas2R.tjaYqEdnWexfO8gS1K5NT {\n  outline: 0px !important;\n  -webkit-appearance: none; }\n\n._3H9R1OaCl5Aee15TZVk-FK {\n  list-style: none; }\n", ""]);
+exports.push([module.i, "textarea:hover, input:hover, textarea:active, input:active, textarea:focus,\nbutton:focus, button:active, button:hover, label:focus, ._15KaYryrogMWjNI2ANas2R:active,\n._15KaYryrogMWjNI2ANas2R.tjaYqEdnWexfO8gS1K5NT {\n  outline: 0px !important;\n  -webkit-appearance: none; }\n\n._3H9R1OaCl5Aee15TZVk-FK {\n  list-style: none; }\n\n.CuKFDzorelGJ79dcorYL8 {\n  width: 49px;\n  height: 49px;\n  text-align: center;\n  padding: 5px 0;\n  font-size: 20px;\n  line-height: 2.00;\n  border-radius: 30px; }\n", ""]);
 
 // exports
 exports.locals = {
 	"btn": "_15KaYryrogMWjNI2ANas2R",
 	"active": "tjaYqEdnWexfO8gS1K5NT",
-	"phoneFirstRow": "_3H9R1OaCl5Aee15TZVk-FK"
+	"phoneFirstRow": "_3H9R1OaCl5Aee15TZVk-FK",
+	"phoneNumber": "CuKFDzorelGJ79dcorYL8"
 };
 
 /***/ }),

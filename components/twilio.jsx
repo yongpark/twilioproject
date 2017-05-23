@@ -27,47 +27,42 @@ class Twilio extends React.Component {
         <h1>
           Send yourself a wake up call!
         </h1>
-        <div className='phone'>
-          Phone
-          <div className='phoneTopPortion'>
-          </div>
-          <ul className={styles.phoneFirstRow}>
-
-              <li className='phoneNumber'>
-                1
-              </li>
-              <li className='phoneNumber'>
-                2
-              </li>
-              <li className='phoneNumber'>
-                3
-              </li>
-          </ul>
-          <ul className='phoneSecondRow'>
-            <li className='phoneNumber'>
-              4
-            </li>
-            <li className='phoneNumber'>
-              5
-            </li>
-            <li className='phoneNumber'>
-              6
-            </li>
-          </ul>
-          <ul className='phoneThirdRow'>
-            <li className='phoneNumber'>
-              7
-            </li>
-            <li className='phoneNumber'>
-              8
-            </li>
-            <li className='phoneNumber'>
-              9
-            </li>
-          </ul>
-          <div className='phoneBottomPortion'>
-          </div>
+        <div>
+          <input type='tel' value='' className="telephoneInput" placeholder='111-222-3333'/>
         </div>
+        <ul className={styles.phoneFirstRow}>
+            <button className={styles.phoneNumber}>
+              1
+            </button>
+            <button className={styles.phoneNumber}>
+              2
+            </button>
+            <button className={styles.phoneNumber}>
+              3
+            </button>
+        </ul>
+        <ul className={styles.phoneSecondRow}>
+          <button className={styles.phoneNumber}>
+            4
+          </button>
+          <button className={styles.phoneNumber}>
+            5
+          </button>
+          <button className={styles.phoneNumber}>
+            6
+          </button>
+        </ul>
+        <ul className={styles.phoneThird}>
+          <button className={styles.phoneNumber}>
+            7
+          </button>
+          <button className={styles.phoneNumber}>
+            8
+          </button>
+          <button className={styles.phoneNumber}>
+            9
+          </button>
+        </ul>
         <div className='messageInputContainer'>
           <h3>
             Enter Message
