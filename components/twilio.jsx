@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
+<<<<<<< HEAD
+=======
+
+>>>>>>> e91f44291695701d263a83bbb85d9fa0267d5f18
 
 import styles from '../assets/styles.scss';
 import coolStyle from '../assets/test_file.css';
@@ -19,10 +23,12 @@ class Twilio extends React.Component {
       phoneNumber: '',
       message: '',
       date: null,
+      time: null,
     };
     this.updateDate = this.updateDate.bind(this);
     this.updateNumber = this.updateNumber.bind(this);
     this.updateTime = this.updateTime.bind(this);
+<<<<<<< HEAD
   }
   updateNumber(){
     return e => {
@@ -32,6 +38,19 @@ class Twilio extends React.Component {
     };
   }
 
+=======
+    this.twilioCall = this.twilioCall.bind(this);
+  }
+
+  updateNumber(){
+    return e => {
+      const number = e.target.value;
+      this.setState({phoneNumber: number});
+      console.log(this.state);
+    };
+  }
+
+>>>>>>> e91f44291695701d263a83bbb85d9fa0267d5f18
   updateDate(){
     return e => {
       const date = new Date(e.target.value);
@@ -70,7 +89,7 @@ class Twilio extends React.Component {
           Send yourself a wake up call!
         </h1>
         <div>
-          <input type='tel' value='' className="telephoneInput" placeholder='111-222-3333'/>
+          <input type='tel' value={this.state.phoneNumber} className="telephoneInput" placeholder='111-222-3333' onChange={this.updateNumber}/>
         </div>
         <ul className={styles.phoneFirstRow}>
             <button className={styles.phoneNumber}>
@@ -112,8 +131,8 @@ class Twilio extends React.Component {
           <textarea className='messageInputArea'/>
         </div>
         <div className='alarmTimerContainer'>
-           <input type="time"/>
-           <input type='datepicker'/>
+           <input type="time" onChange={this.updateTime}/>
+           <input type='datepicker' onChange={this.upateDate}/>
         </div>
         <input type='submit'/>
       </div>
