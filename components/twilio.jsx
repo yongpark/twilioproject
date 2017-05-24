@@ -1,10 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
-<<<<<<< HEAD
-=======
-
->>>>>>> e91f44291695701d263a83bbb85d9fa0267d5f18
 
 import styles from '../assets/styles.scss';
 import coolStyle from '../assets/test_file.css';
@@ -25,60 +21,12 @@ class Twilio extends React.Component {
       date: null,
       time: null,
     };
-    this.updateDate = this.updateDate.bind(this);
-    this.updateNumber = this.updateNumber.bind(this);
-    this.updateTime = this.updateTime.bind(this);
-<<<<<<< HEAD
   }
-  updateNumber(){
+  update(field){
     return e => {
-      const number = e.target.value;
-      this.setState({phoneNumber: number});
+      this.setState({[field]: e.currentTarget.value});
       console.log(this.state);
     };
-  }
-
-=======
-    this.twilioCall = this.twilioCall.bind(this);
-  }
-
-  updateNumber(){
-    return e => {
-      const number = e.target.value;
-      this.setState({phoneNumber: number});
-      console.log(this.state);
-    };
-  }
-
->>>>>>> e91f44291695701d263a83bbb85d9fa0267d5f18
-  updateDate(){
-    return e => {
-      const date = new Date(e.target.value);
-      this.setState({date: date});
-      console.log(this.state);
-    };
-  }
-
-  updateTime(){
-    return e => {
-      const time = e.target.value;
-      this.setState({time: time});
-      console.log(this.state);
-    };
-  }
-
-  twilioCall(){
-    //TwilioAPICall
-    const accountSid = 'AC2a030dd4c2eefc7ace3f2f9c63495c74';
-    const authToken = '5d5a3358a582439bac75aa3ac3c97e95';
-    const client = require('twilio')(accountSid, authToken);
-    client.calls
-      .create({
-        url: 'http://demo.twilio.com/docs/voice.xml',
-        to: '+14155551212',
-        from: '+15017250604',
-      })
-      .then((call) => process.stdout.write(call.sid));
   }
 
 
@@ -89,7 +37,7 @@ class Twilio extends React.Component {
           Send yourself a wake up call!
         </h1>
         <div>
-          <input type='tel' value={this.state.phoneNumber} className="telephoneInput" placeholder='111-222-3333' onChange={this.updateNumber}/>
+          <input type='tel' value={this.state.phoneNumber} className="telephoneInput" placeholder='111-222-3333' onChange={this.update('number')}/>
         </div>
         <ul className={styles.phoneFirstRow}>
             <button className={styles.phoneNumber}>
@@ -128,11 +76,11 @@ class Twilio extends React.Component {
           <h3>
             Enter Message
           </h3>
-          <textarea className='messageInputArea'/>
+          <textarea className='messageInputArea' onChange={this.update('message')}/>
         </div>
         <div className='alarmTimerContainer'>
-           <input type="time" onChange={this.updateTime}/>
-           <input type='datepicker' onChange={this.upateDate}/>
+           <input type="time" onChange={this.update('time')}/>
+           <input type='datepicker' onChange={this.update('date')}/>
         </div>
         <input type='submit'/>
       </div>
