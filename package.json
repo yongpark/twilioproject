@@ -2,27 +2,12 @@
   "name": "twilioproject",
   "version": "1.0.0",
   "description": "",
-  "main": "./components/index.jsx",
-  "dependencies": {
-    "babel-core": "^6.24.1",
-    "babel-loader": "^7.0.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "twilio": "^3.0.0",
-    "webpack": "^2.5.1"
-  },
-  "devDependencies": {
-    "css-loader": "^0.28.2",
-    "node-sass": "^4.5.3",
-    "sass-loader": "^6.0.5",
-    "style-loader": "^0.18.0",
-    "webpack": "^2.5.1"
-  },
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "npm build && node dist/app.js",
+    "dev-start": "node dist/app.js",
+    "build": "webpack --config ./webpack.deployment.config.js --progress --colors"
   },
   "repository": {
     "type": "git",
@@ -33,5 +18,25 @@
   "bugs": {
     "url": "https://github.com/yongpark/twilioproject/issues"
   },
-  "homepage": "https://github.com/yongpark/twilioproject#readme"
+  "homepage": "https://github.com/yongpark/twilioproject#readme",
+  "dependencies": {
+    "css-loader": "^0.28.2",
+    "express": "^4.15.3",
+    "moment": "^2.18.1",
+    "node-sass": "^4.5.3",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "sass-loader": "^6.0.5"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "react-hot-loader": "^1.3.1",
+    "webpack": "^2.6.0",
+    "webpack-dev-middleware": "^1.10.2",
+    "webpack-hot-middleware": "^2.18.0"
+  }
 }
