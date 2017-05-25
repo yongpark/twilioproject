@@ -37,7 +37,7 @@ class Twilio extends React.Component {
           Send yourself a wake up call!
         </h1>
         <div>
-          <input type='tel' value={this.state.phoneNumber} className="telephoneInput" placeholder='111-222-3333' onChange={this.update('number')}/>
+          <input type='number' value={this.state.phoneNumber} className="telephoneInput" placeholder='111-222-3333' onChange={this.update('number')}/>
         </div>
         <ul className={styles.phoneFirstRow}>
             <button className={styles.phoneNumber}>
@@ -80,7 +80,7 @@ class Twilio extends React.Component {
         </div>
         <div className='alarmTimerContainer'>
            <input type="time" onChange={this.update('time')}/>
-           <input type='datepicker' onChange={this.update('date')}/>
+           <input type='date' onChange={this.update('date')}/>
         </div>
         <input type='submit'/>
       </div>
