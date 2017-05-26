@@ -27,6 +27,14 @@ class Twilio extends React.Component {
     };
   }
 
+  updateDate(field){
+    return e => {
+      let date = new Date(e.currentTarget.value);
+      this.setState({[field]: date});
+      console.log(this.state);
+    };
+  }
+
 
   render(){
     return(
