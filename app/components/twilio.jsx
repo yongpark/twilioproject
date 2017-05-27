@@ -29,7 +29,6 @@ class Twilio extends React.Component {
         [field]: e.target.value
       });
       this.setState({call});
-      console.log(this.state);
     };
   }
 
@@ -39,7 +38,6 @@ class Twilio extends React.Component {
         [field]: new Date(e.currentTarget.value)
       });
       this.setState({call});
-      console.log(this.state);
     };
   }
 
