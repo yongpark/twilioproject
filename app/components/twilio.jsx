@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
+import merge from 'lodash/merge';
 
 // import styles from '../assets/styles/styles.scss';
 
@@ -14,29 +15,38 @@ class Twilio extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      phoneNumber: '',
-      message: '',
-      date: null,
-      time: null,
+      savedCalls: {},
     };
   }
+
+  loadCallsFromServer(){
+
+  }
+
   update(field){
-    console.log(this.props.url);
     return e => {
-      this.setState({[field]: e.currentTarget.value});
+      const call = merge({}, this.state.gitem, {
+        [field]: e.target.value
+      });
+      this.setState(call);
       console.log(this.state);
     };
   }
 
   updateDate(field){
     return e => {
-      let date = new Date(e.currentTarget.value);
-      console.log(date);
-      this.setState({[field]: date});
+      const call = merge({}, this.state.gitem, {
+        [field]: new Date(e.currentTarget.value)
+      });
+      this.setState(call);
       console.log(this.state);
     };
   }
 
+  handleSubmit(e){
+    e.preventDefault();
+    this.props.createCallLog(this.state.call);
+  }
 
   render(){
     return(
