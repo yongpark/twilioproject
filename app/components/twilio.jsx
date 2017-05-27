@@ -21,6 +21,7 @@ class Twilio extends React.Component {
     };
   }
   update(field){
+    console.log(this.props.url);
     return e => {
       this.setState({[field]: e.currentTarget.value});
       console.log(this.state);
@@ -30,6 +31,7 @@ class Twilio extends React.Component {
   updateDate(field){
     return e => {
       let date = new Date(e.currentTarget.value);
+      console.log(date);
       this.setState({[field]: date});
       console.log(this.state);
     };
@@ -43,7 +45,7 @@ class Twilio extends React.Component {
           Send yourself a wake up call!
         </h1>
         <div>
-          <input type='number' value={this.state.phoneNumber} className="telephoneInput" placeholder='111-222-3333' onChange={this.update('number')}/>
+          <input type='number' value={this.state.phoneNumber} className="telephoneInput" placeholder='111-222-3333' onChange={this.update('phoneNumber')}/>
         </div>
         <ul>
             <button>

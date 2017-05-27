@@ -7,5 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	// store = configureStore();
 	// window.store = store;
 	const root = document.getElementById("root");
-	ReactDOM.render(<Twilio/>, root);
+	ReactDOM.render(<Twilio
+		url='http://localhost:8080/api/calls'/>, root);
 });
