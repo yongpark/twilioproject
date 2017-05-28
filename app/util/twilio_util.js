@@ -1,4 +1,6 @@
-export const fetchCall = () => (
+import $ from 'jquery';
+
+export const fetchCalls = () => (
   $.ajax({
     type: 'GET',
     url: `api/calls`

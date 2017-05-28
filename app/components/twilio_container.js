@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {createCallLog} from '..//actions/twilio_actions';
+import {createCall, fetchCalls} from '..//actions/twilio_actions';
 import Twilio from './twilio.jsx';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -11,7 +11,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 
 const mapDispatchToProps = dispatch => ({
-  createCallLog: callLog => dispatch(createCallLog(callLog))
+  createCall: call => dispatch(createCall(call)),
+  fetchCalls: () => dispatch(fetchCalls())
 });
 
 export default connect(

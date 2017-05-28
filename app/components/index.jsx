@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Twilio from './twilio.jsx';
+import TwilioContainer from './twilio_container.js';
 import configureStore from '../store/store.js';
+
 
 document.addEventListener("DOMContentLoaded", () => {
 	let store = {};
 	store = configureStore();
 	window.store = store;
 	const root = document.getElementById("root");
-	ReactDOM.render(<Twilio
+	ReactDOM.render(<TwilioContainer
 		url='http://localhost:8080/api/calls' store={store}/>, root);
 });

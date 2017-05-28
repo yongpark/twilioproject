@@ -19,8 +19,8 @@ class Twilio extends React.Component {
     };
   }
 
-  loadCallsFromServer(){
-
+  componentDidMount(){
+    this.props.fetchCalls().then((result) => console.log(result));
   }
 
   update(field){
