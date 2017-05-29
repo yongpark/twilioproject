@@ -7,8 +7,7 @@ const Schema = mongoose.Schema;
 const CallsSchema = new Schema({
   phoneNumber: String,
   message: String,
-  date: Date,
-  time: Date
+  date: Date
 });
 
 module.exports = mongoose.model('Call', CallsSchema)

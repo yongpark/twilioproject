@@ -5,8 +5,8 @@ import Twilio from './twilio.jsx';
 const mapStateToProps = (state, ownProps) => ({
   call: {phoneNumber: '',
   message: '',
-  date: null,
-  time: null,}
+  date: new Date()
+  }
 });
 
 

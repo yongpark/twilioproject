@@ -10,9 +10,8 @@ export const fetchCalls = () => (
 
 export const createCall = call => (
   $.ajax({
-    type: "POST",
+    type: 'POST',
     url: `api/calls`,
-    contentType: 'application/x-www-form-urlencoded',
-    data: {call}
-  })
+    data: {phoneNumber: call.phoneNumber, message: call.message, date: call.date}
+  }).then(() => console.log(call))
 );

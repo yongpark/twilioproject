@@ -19,6 +19,7 @@ class Twilio extends React.Component {
       call: props.call
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateDate = this.updateDate.bind(this);
   }
 
   componentDidMount(){
@@ -43,14 +44,36 @@ class Twilio extends React.Component {
         [field]: newNumber
       });
       this.setState({call});
-      console.log(this.state.call.phoneNumber);
     };
   }
 
   updateDate(field){
     return e => {
+      let date = e.currentTarget.value;
+      let year = date.slice(0,4);
+      let month = date.slice(5,7);
+      let day = date.slice(8,10);
+      let currentTime = this.state.call.date;
+      currentTime.setYear(year);
+      currentTime.setMonth(month);
+      currentTime.setDate(day);
       const call = merge({}, this.state.call, {
-        [field]: new Date(e.currentTarget.value)
+        [field]: currentTime
+      });
+      this.setState({call});
+    };
+  }
+
+  updateTime(field){
+    return e => {
+      let time = e.currentTarget.value;
+      let hours = time.slice(0,2);
+      let minutes = time.slice(3,5);
+      let currentTime = this.state.call.date;
+      currentTime.setHours(hours);
+      currentTime.setMinutes(minutes);
+      const call = merge({}, this.state.call, {
+        [field]: currentTime
       });
       this.setState({call});
     };
@@ -58,7 +81,6 @@ class Twilio extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    console.log(this.state.call);
     this.props.createCall(this.state.call);
   }
 
@@ -115,8 +137,8 @@ class Twilio extends React.Component {
           <textarea className='messageInputArea' onChange={this.update('message')}/>
         </div>
         <div className='alarmTimerContainer'>
-           <input type="time" onChange={this.update('time')}/>
-           <input type='date' onChange={this.update('date')}/>
+           <input type="time" onChange={this.updateTime('date')}/>
+           <input type='date' onChange={this.updateDate('date')}/>
         </div>
         <button type='submit'>Submit</button>
         </form>
