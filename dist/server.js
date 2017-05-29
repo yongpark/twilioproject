@@ -2,6 +2,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const express = require('express');
 const Call = require('../app/model/call');
+const bodyParser = require('body-parser');
 
 module.exports = {
   app: function () {
@@ -12,6 +13,8 @@ module.exports = {
     //db config
     mongoose.connect('mongodb://yongpark:mlabpassword@ds153501.mlab.com:53501/twilioalarm');
 
+    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(bodyParser.json());
     app.use('/dist', publicPath);
     app.get('/', function (_, res) { res.sendFile(indexPath); });
     router.get('/', function(req, res) {

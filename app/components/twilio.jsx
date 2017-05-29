@@ -15,12 +15,12 @@ class Twilio extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      savedCalls: {},
+      savedCalls: [],
     };
   }
 
   componentDidMount(){
-    this.props.fetchCalls().then((result) => console.log(result));
+    this.props.fetchCalls().then((result) => this.setState({savedCalls: result.calls})).then(() => console.log(this.state));
   }
 
   update(field){
@@ -43,7 +43,8 @@ class Twilio extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.createCallLog(this.state.call);
+    console.log(this.state.call);
+    this.props.createCall(this.state.call);
   }
 
   render(){
@@ -53,38 +54,38 @@ class Twilio extends React.Component {
           Send yourself a wake up call!
         </h1>
         <div>
-          <input type='number' className="telephoneInput" placeholder='111-222-3333' onChange={this.update('phoneNumber')}/>
+          <input type='number' value={this.state.call.phoneNumber} className="telephoneInput" placeholder='111-222-3333' onChange={this.update('phoneNumber')}/>
         </div>
         <ul>
-            <button>
+            <button onClick={this.update('phoneNumber')}>
               1
             </button>
-            <button>
+            <button onClick={this.update('phoneNumber')}>
               2
             </button>
-            <button>
+            <button onClick={this.update('phoneNumber')}>
               3
             </button>
         </ul>
         <ul>
-          <button>
+          <button onClick={this.update('phoneNumber')}>
             4
           </button>
-          <button>
+          <button onClick={this.update('phoneNumber')}>
             5
           </button>
-          <button>
+          <button onClick={this.update('phoneNumber')}>
             6
           </button>
         </ul>
         <ul>
-          <button>
+          <button onClick={this.update('phoneNumber')}>
             7
           </button>
-          <button>
+          <button onClick={this.update('phoneNumber')}>
             8
           </button>
-          <button>
+          <button onClick={this.update('phoneNumber')}>
             9
           </button>
         </ul>
@@ -98,7 +99,7 @@ class Twilio extends React.Component {
            <input type="time" onChange={this.update('time')}/>
            <input type='date' onChange={this.update('date')}/>
         </div>
-        <input type='submit'/>
+        <input type='submit' onSubmit={this.handleSubmit}/>
       </div>
     );
   }
