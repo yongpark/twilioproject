@@ -34,6 +34,8 @@ module.exports = {
        //body parser lets us use the req.body
        call.phoneNumber = req.body.phoneNumber;
        call.message = req.body.message;
+       call.date = req.body.date;
+       call.time = req.body.time;
 
        call.save(function(err) {
        if (err)

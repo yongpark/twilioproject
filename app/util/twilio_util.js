@@ -12,6 +12,7 @@ export const createCall = call => (
   $.ajax({
     type: "POST",
     url: `api/calls`,
+    contentType: 'application/x-www-form-urlencoded',
     data: {call}
   })
 );
