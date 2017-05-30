@@ -5,7 +5,7 @@ import {makeCall} from '../util/twilio_util.js';
 
 const mapStateToProps = (state, ownProps) => ({
   call: {phoneNumber: '+1',
-  message: '',
+  message: 'Enter Wakeup Message',
   date: new Date()
   }
 });

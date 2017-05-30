@@ -100,13 +100,15 @@ class Twilio extends React.Component {
     this.props.makeCall(this.state.call);
   }
 
+  //user setinterval. possible way: when click happens, get date now and compare to date of post. subtract milliseconds then fire call.
+
   render(){
     return(
       <div>
-        <h1>
-          Send yourself a wake up call!
-        </h1>
         <form onSubmit={this.handleSubmit} className={styles.container}>
+          <h1 className={styles.header}>
+            Send yourself a wake up call!
+          </h1>
           <input type='text' className={styles.telephoneInput} placeholder={this.state.call.phoneNumber} value={this.state.call.phoneNumber} onChange={this.updatePhoneNumberInput('phoneNumber')}/>
           <div className={styles.keypad}>
             <button className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={1}>
@@ -146,7 +148,7 @@ class Twilio extends React.Component {
               #
             </button>
           </div>
-          <input type='text' className={styles.messageInput} placeholder='Enter Wakeup Message' onChange={this.update('message')}/>
+          <input type='text' className={styles.messageInput} value={this.state.call.message} onChange={this.update('message')}/>
           <input className={styles.dateInput} type="time" onChange={this.updateTime('date')}/>
           <input className={styles.dateInput} type='date' onChange={this.updateDate('date')}/>
           <button className={styles.scheduleCall} type='submit'>Schedule Alarm</button>
