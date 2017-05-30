@@ -8,6 +8,7 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/dist/'
   },
+  target: 'node',
   module: {
     loaders: [
       {
@@ -19,6 +20,7 @@ module.exports = {
           presets: ['es2015', 'react']
         }
       },
+      { test: /\.json$/, loader: 'json-loader' },
       {
         test: /\.css$/,
         use: [

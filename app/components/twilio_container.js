@@ -4,7 +4,7 @@ import Twilio from './twilio.jsx';
 import {makeCall} from '../util/twilio_util.js';
 
 const mapStateToProps = (state, ownProps) => ({
-  call: {phoneNumber: '',
+  call: {phoneNumber: '+1',
   message: '',
   date: new Date()
   }
@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = dispatch => ({
   createCall: call => dispatch(createCall(call)),
   fetchCalls: () => dispatch(fetchCalls()),
-  makeCall: call => makeCall()
+  makeCall: call => makeCall(call)
 });
 
 export default connect(

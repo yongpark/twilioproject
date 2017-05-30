@@ -10,6 +10,10 @@ import merge from 'lodash/merge';
 // }, 5000);
 
 
+const accountSid = 'AC2a030dd4c2eefc7ace3f2f9c63495c74';
+const authToken = '5d5a3358a582439bac75aa3ac3c97e95';
+
+
 
 class Twilio extends React.Component {
   constructor(props){
@@ -105,7 +109,7 @@ class Twilio extends React.Component {
           Send yourself a wake up call!
         </h1>
         <div>
-          <input type='number' className="telephoneInput" placeholder='111-222-3333' value={this.state.call.phoneNumber} onChange={this.updatePhoneNumberInput('phoneNumber')}/>
+          <input type='text' className="telephoneInput" placeholder={this.state.call.phoneNumber} value={this.state.call.phoneNumber} onChange={this.updatePhoneNumberInput('phoneNumber')}/>
         </div>
         <ul>
             <button onClick={this.updatePhoneNumber('phoneNumber')} value={1}>
