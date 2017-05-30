@@ -5,3 +5,4 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 dist/make_call.js
+dist/twilio_client.js

@@ -19,9 +19,6 @@ module.exports = {
     app.use('/dist', publicPath);
     app.use('/app', express.static(__dirname + '../app'));
     app.get('/', function (_, res) { res.sendFile(indexPath); });
-    router.get('/', function(req, res) {
-      res.json({ message: 'API Initialized!'});
-    });
 
     router.route('/calls')
       .get(function(req,res){
