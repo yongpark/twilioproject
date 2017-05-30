@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm build && node dist/app.js",
+    "start":  "node dist/app.js",
     "dev-start": "node dist/app.js",
-    "build": "webpack --config ./webpack.deployment.config.js --progress --colors"
+    "build": "webpack --config ./webpack.deployment.config.js --progress --colors",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
