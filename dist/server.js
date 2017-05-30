@@ -18,9 +18,6 @@ module.exports = {
     app.use(bodyParser.json());
     app.use('/dist', publicPath);
     app.get('/', function (_, res) { res.sendFile(indexPath); });
-    router.get('/', function(req, res) {
-      res.json({ message: 'API Initialized!'});
-    });
 
     router.route('/calls')
       .get(function(req,res){
