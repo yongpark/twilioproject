@@ -9,5 +9,5 @@ document.addEventListener("DOMContentLoaded", () => {
 	store = configureStore();
 	window.store = store;
 	const root = document.getElementById("root");
-	ReactDOM.render(<TwilioContainer store={store}/>, root);
+	ReactDOM.render(<TwilioContainer url='/' store={store}/>, root);
 });
