@@ -18,32 +18,32 @@ module.exports = {
     app.use(bodyParser.json());
     app.use('/dist', publicPath);
     app.get('/', function (_, res) { res.sendFile(indexPath); });
-    // router.get('/', function(req, res) {
-    //   res.json({ message: 'API Initialized!'});
-    // });
-    //
-    // router.route('/calls')
-    //   .get(function(req,res){
-    //     Call.find(function(err, calls) {
-    //       if (err)
-    //       res.send(err);
-    //       res.json(calls);
-    //     });
-    //   })
-    // .post(function(req, res) {
-    //    var call = new Call();
-    //    //body parser lets us use the req.body
-    //    call.phoneNumber = req.body.phoneNumber;
-    //    call.message = req.body.message;
-    //    call.date = req.body.date;
-    //
-    //    call.save(function(err) {
-    //    if (err)
-    //    res.send(err);
-    //    res.json({ message: 'Comment successfully added!'});
-    //    });
-    //  });
-    //
+    router.get('/', function(req, res) {
+      res.json({ message: 'API Initialized!'});
+    });
+
+    router.route('/calls')
+      .get(function(req,res){
+        Call.find(function(err, calls) {
+          if (err)
+          res.send(err);
+          res.json(calls);
+        });
+      })
+    .post(function(req, res) {
+       var call = new Call();
+       //body parser lets us use the req.body
+       call.phoneNumber = req.body.phoneNumber;
+       call.message = req.body.message;
+       call.date = req.body.date;
+
+       call.save(function(err) {
+       if (err)
+       res.send(err);
+       res.json({ message: 'Comment successfully added!'});
+       });
+     });
+
     // router.route('/calls/:phoneNumber/:url')
     //   .get(function(req, res){
     //     let string = 'https://handler.twilio.com/twiml/EH6b4fda028dda8f39e767fded83c6ff87?Message=';
@@ -54,9 +54,9 @@ module.exports = {
     //         from: '+14152125938',
     //       });
     // });
+    //
 
-
-    // app.use('/api', router);
+    app.use('/api', router);
 
     return app;
   }

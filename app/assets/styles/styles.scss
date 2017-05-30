@@ -1,19 +1,74 @@
 textarea:hover,  input:hover, textarea:active, input:active, textarea:focus,
 button:focus, button:active, button:hover, label:focus, .btn:active,
-.btn.active {
-    outline:0px !important;
-    -webkit-appearance:none;
-}
 
 .phoneFirstRow{
   list-style: none;
 }
 
-.phoneNumber{width: 49px;
-  height: 49px;
+.container{ width: 400px;
+  background: #fff;
+  margin: 1em auto;
+  border-radius: 5px;
+
+}
+
+.keypad{
+  width: 100%;
+}
+
+.key{
+  color: #9FA7B4;
+  float: left;
+  width: 33.33%;
   text-align: center;
-  padding: 5px 0;
-  font-size: 20px;
-  line-height: 2.00;
-  border-radius: 30px;
+  padding: 1em;
+  font-size: 2em;
+  background: #ECF0F1;
+  border: 2px solid #EFF3F6;
+  border-bottom: none;
+}
+
+
+.telephoneInput{
+  background: #9FA7B4;
+  text-align: center;
+  padding: 0.7em 0;
+  color: #ECF0F1;
+  font-size: 2em;
+  width: 100%;
+  border: none;
+}
+
+.messageInput{
+  background: #9FA7B4;
+  text-align: center;
+  color: #ECF0F1;
+  font-size: 2em;
+  width: 100%;
+  border: none;
+  padding: 0.7em 0;
+}
+
+.dateInput{
+  width: 39%;
+  float: left;
+  background: #323A45;
+  text-align: center;
+  color: #ECF0F1;
+  padding: 1em;
+  font-size: 1.5em;
+  border: 2.5px solid #323A45;
+  border-bottom: none;
+}
+
+.scheduleCall{
+  background: #4cd964;
+  text-align: center;
+  padding: 0.7em 0;
+  color: #ECF0F1;
+  font-size: 2em;
+  width: 100%;
+  border: none;
+  box-shadow:none;
+  border-radius: 0px;
 }

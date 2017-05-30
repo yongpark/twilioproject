@@ -2,12 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
 import merge from 'lodash/merge';
+import styles from '../assets/styles/styles.scss';
 
-// import styles from '../assets/styles/styles.scss';
-
-// setTimeout(function () {
-//   console.log(styles);
-// }, 5000);
+setTimeout(function () {
+  console.log(styles);
+}, 5000);
 
 
 const accountSid = 'AC2a030dd4c2eefc7ace3f2f9c63495c74';
@@ -28,7 +27,7 @@ class Twilio extends React.Component {
   }
 
   componentDidMount(){
-    this.props.fetchCalls().then((result) => this.setState({savedCalls: result.calls})).then(() => console.log(this.state));
+    this.props.fetchCalls().then((result) => this.setState({savedCalls: result.calls}));
   }
 
   update(field){
@@ -103,61 +102,54 @@ class Twilio extends React.Component {
 
   render(){
     return(
-      <div className='appContainer'>
-        <form onSubmit={this.handleSubmit}>
+      <div>
         <h1>
           Send yourself a wake up call!
         </h1>
-        <div>
-          <input type='text' className="telephoneInput" placeholder={this.state.call.phoneNumber} value={this.state.call.phoneNumber} onChange={this.updatePhoneNumberInput('phoneNumber')}/>
-        </div>
-        <ul>
-            <button onClick={this.updatePhoneNumber('phoneNumber')} value={1}>
+        <form onSubmit={this.handleSubmit} className={styles.container}>
+          <input type='text' className={styles.telephoneInput} placeholder={this.state.call.phoneNumber} value={this.state.call.phoneNumber} onChange={this.updatePhoneNumberInput('phoneNumber')}/>
+          <div className={styles.keypad}>
+            <button className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={1}>
               1
             </button>
-            <button onClick={this.updatePhoneNumber('phoneNumber')} value={2}>
+            <button className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={2}>
               2
             </button>
-            <button onClick={this.updatePhoneNumber('phoneNumber')} value={3}>
+            <button className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={3}>
               3
             </button>
-        </ul>
-        <ul>
-          <button onClick={this.updatePhoneNumber('phoneNumber')} value={4}>
-            4
-          </button>
-          <button onClick={this.updatePhoneNumber('phoneNumber')} value={5}>
-            5
-          </button>
-          <button onClick={this.updatePhoneNumber('phoneNumber')} value={6}>
-            6
-          </button>
-        </ul>
-        <ul>
-          <button onClick={this.updatePhoneNumber('phoneNumber')} value={7}>
-            7
-          </button>
-          <button onClick={this.updatePhoneNumber('phoneNumber')} value={8}>
-            8
-          </button>
-          <button onClick={this.updatePhoneNumber('phoneNumber')} value={9}>
-            9
-          </button>
-          <button onClick={this.updatePhoneNumber('phoneNumber')} value={0}>
-            0
-          </button>
-        </ul>
-        <div className='messageInputContainer'>
-          <h3>
-            Enter Message
-          </h3>
-          <textarea className='messageInputArea' onChange={this.update('message')}/>
-        </div>
-        <div className='alarmTimerContainer'>
-           <input type="time" onChange={this.updateTime('date')}/>
-           <input type='date' onChange={this.updateDate('date')}/>
-        </div>
-        <button type='submit'>Submit</button>
+            <button className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={4}>
+              4
+            </button>
+            <button className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={5}>
+              5
+            </button>
+            <button className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={6}>
+              6
+            </button>
+            <button className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={7}>
+              7
+            </button>
+            <button className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={8}>
+              8
+            </button>
+            <button className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={9}>
+              9
+            </button>
+            <button className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={`*`}>
+              *
+            </button>
+            <button className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={0}>
+              0
+            </button>
+            <button className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={'#'}>
+              #
+            </button>
+          </div>
+          <input type='text' className={styles.messageInput} placeholder='Enter Wakeup Message' onChange={this.update('message')}/>
+          <input className={styles.dateInput} type="time" onChange={this.updateTime('date')}/>
+          <input className={styles.dateInput} type='date' onChange={this.updateDate('date')}/>
+          <button className={styles.scheduleCall} type='submit'>Schedule Alarm</button>
         </form>
       </div>
     );
