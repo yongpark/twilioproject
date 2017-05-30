@@ -13,13 +13,12 @@ export const createCall = call => (
     type: 'POST',
     url: `api/calls`,
     data: {phoneNumber: call.phoneNumber, message: call.message, date: call.date}
-  }).then(() => console.log(call))
+  })
 );
 
 export const makeCall = call => (
   $.ajax({
     type:'GET',
-    url: `api/calls/${call.phoneNumber}/${call.message}`,
-
+    url: `api/calls/${call.phoneNumber}/${call.message}`
   })
 );

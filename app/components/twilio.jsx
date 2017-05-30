@@ -4,9 +4,9 @@ import moment from 'moment';
 import merge from 'lodash/merge';
 import styles from '../assets/styles/styles.scss';
 
-setTimeout(function () {
-  console.log(styles);
-}, 5000);
+// setTimeout(function () {
+//   console.log(styles);
+// }, 5000);
 
 
 const accountSid = 'AC2a030dd4c2eefc7ace3f2f9c63495c74';
@@ -23,7 +23,10 @@ class Twilio extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateDate = this.updateDate.bind(this);
-
+    this.initialState = this.state.call;
+    this.reset = this.reset.bind(this);
+    this.makeCall = this.makeCall;
+    this.timeOut = this.timeOut;
   }
 
   componentDidMount(){
@@ -70,7 +73,7 @@ class Twilio extends React.Component {
       let day = date.slice(8,10);
       let currentTime = this.state.call.date;
       currentTime.setYear(year);
-      currentTime.setMonth(month);
+      currentTime.setMonth(month - 1);
       currentTime.setDate(day);
       const call = merge({}, this.state.call, {
         [field]: currentTime
@@ -94,13 +97,31 @@ class Twilio extends React.Component {
     };
   }
 
-  handleSubmit(e){
-    e.preventDefault();
-    this.props.createCall(this.state.call);
-    this.props.makeCall(this.state.call);
+  makeCall(){
+    arguments[1](arguments[0]);
   }
 
-  //user setinterval. possible way: when click happens, get date now and compare to date of post. subtract milliseconds then fire call.
+  timeOut(){
+    setTimeout(this.makeCall.bind(null, arguments[0], this.props.makeCall), arguments[1]);
+  }
+
+  scheduleCall(call){
+    this.reset();
+    let callState = call;
+    let date = call.date;
+    let currentDate = new Date();
+    let timeDiff = date - currentDate;
+    this.props.fetchCalls().then((result) => this.setState({savedCalls: result.calls})).then(this.timeOut(callState, timeDiff));
+  }
+
+  reset(){
+    this.setState({call: this.initialState});
+  }
+
+  handleSubmit(e){
+    e.preventDefault();
+    this.props.createCall(this.state.call).then(this.scheduleCall(this.state.call));
+  }
 
   render(){
     return(
