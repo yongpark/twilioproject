@@ -20,6 +20,7 @@ class Twilio extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateDate = this.updateDate.bind(this);
+
   }
 
   componentDidMount(){
@@ -93,6 +94,7 @@ class Twilio extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     this.props.createCall(this.state.call);
+    this.props.makeCall(this.state.call);
   }
 
   render(){
