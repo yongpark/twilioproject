@@ -1,6 +1,3 @@
-textarea:hover,  input:hover, textarea:active, input:active, textarea:focus,
-button:focus, button:active, button:hover, label:focus, .btn:active,
-
 .phoneFirstRow{
   list-style: none;
 }
@@ -28,6 +25,10 @@ button:focus, button:active, button:hover, label:focus, .btn:active,
   border-bottom: none;
 }
 
+.key:focus{
+  outline:none;
+}
+
 
 .telephoneInput{
   background: #9FA7B4;
@@ -39,6 +40,10 @@ button:focus, button:active, button:hover, label:focus, .btn:active,
   border: none;
 }
 
+.telephoneInput:focus{
+  outline:none;
+}
+
 .messageInput{
   background: #9FA7B4;
   text-align: center;
@@ -47,6 +52,10 @@ button:focus, button:active, button:hover, label:focus, .btn:active,
   width: 100%;
   border: none;
   padding: 0.7em 0;
+}
+
+.messageInput:focus{
+  outline:none;
 }
 
 .dateInput{
@@ -61,6 +70,10 @@ button:focus, button:active, button:hover, label:focus, .btn:active,
   border-bottom: none;
 }
 
+.dateInput:focus{
+  outline:none;
+}
+
 .scheduleCall{
   background: #4cd964;
   text-align: center;
@@ -71,4 +84,8 @@ button:focus, button:active, button:hover, label:focus, .btn:active,
   border: none;
   box-shadow:none;
   border-radius: 0px;
+}
+
+.scheduleCall:focus{
+  outline:none;
 }
