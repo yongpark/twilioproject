@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const Call = require('../app/model/call');
 const bodyParser = require('body-parser');
-const client = require('twilio')(accountSid, authToken);
+// const client = require('twilio')(accountSid, authToken);
 
 module.exports = {
   app: function () {
@@ -43,17 +43,17 @@ module.exports = {
        res.json({ message: 'Comment successfully added!'});
        });
      });
-
-    router.route('/calls/:phoneNumber/:url')
-      .get(function(req, res){
-        let string = 'https://handler.twilio.com/twiml/EH6b4fda028dda8f39e767fded83c6ff87?Message=';
-        client.calls
-          .create({
-            url: string + req.params.url,
-            to: req.params.phoneNumber,
-            from: '+14152125938',
-          });
-    });
+    //
+    // router.route('/calls/:phoneNumber/:url')
+    //   .get(function(req, res){
+    //     let string = 'https://handler.twilio.com/twiml/EH6b4fda028dda8f39e767fded83c6ff87?Message=';
+    //     client.calls
+    //       .create({
+    //         url: string + req.params.url,
+    //         to: req.params.phoneNumber,
+    //         from: '+14152125938',
+    //       });
+    // });
 
 
     app.use('/api', router);
