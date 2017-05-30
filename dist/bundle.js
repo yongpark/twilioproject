@@ -27486,6 +27486,10 @@ var _twilio_container = __webpack_require__(245);
 
 var _twilio_container2 = _interopRequireDefault(_twilio_container);
 
+var _twilio = __webpack_require__(244);
+
+var _twilio2 = _interopRequireDefault(_twilio);
+
 var _store = __webpack_require__(248);
 
 var _store2 = _interopRequireDefault(_store);
@@ -27497,7 +27501,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	store = (0, _store2.default)();
 	window.store = store;
 	var root = document.getElementById("root");
-	_reactDom2.default.render(_react2.default.createElement(_twilio_container2.default, { url: '/', store: store }), root);
+	_reactDom2.default.render(_react2.default.createElement(_twilio_container2.default, { store: store }), root);
 });
 
 /***/ }),

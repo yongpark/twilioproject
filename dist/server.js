@@ -17,30 +17,32 @@ module.exports = {
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
     app.use('/dist', publicPath);
-    app.use('/app', express.static(__dirname + '../app'));
     app.get('/', function (_, res) { res.sendFile(indexPath); });
-
-    router.route('/calls')
-      .get(function(req,res){
-        Call.find(function(err, calls) {
-          if (err)
-          res.send(err);
-          res.json(calls);
-        });
-      })
-    .post(function(req, res) {
-       var call = new Call();
-       //body parser lets us use the req.body
-       call.phoneNumber = req.body.phoneNumber;
-       call.message = req.body.message;
-       call.date = req.body.date;
-
-       call.save(function(err) {
-       if (err)
-       res.send(err);
-       res.json({ message: 'Comment successfully added!'});
-       });
-     });
+    // router.get('/', function(req, res) {
+    //   res.json({ message: 'API Initialized!'});
+    // });
+    //
+    // router.route('/calls')
+    //   .get(function(req,res){
+    //     Call.find(function(err, calls) {
+    //       if (err)
+    //       res.send(err);
+    //       res.json(calls);
+    //     });
+    //   })
+    // .post(function(req, res) {
+    //    var call = new Call();
+    //    //body parser lets us use the req.body
+    //    call.phoneNumber = req.body.phoneNumber;
+    //    call.message = req.body.message;
+    //    call.date = req.body.date;
+    //
+    //    call.save(function(err) {
+    //    if (err)
+    //    res.send(err);
+    //    res.json({ message: 'Comment successfully added!'});
+    //    });
+    //  });
     //
     // router.route('/calls/:phoneNumber/:url')
     //   .get(function(req, res){
@@ -54,7 +56,7 @@ module.exports = {
     // });
 
 
-    app.use('/api', router);
+    // app.use('/api', router);
 
     return app;
   }
