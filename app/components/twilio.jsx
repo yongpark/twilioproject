@@ -47,6 +47,17 @@ class Twilio extends React.Component {
     };
   }
 
+  updatePhoneNumberInput(field){
+    return e => {
+      let newDigitString = e.target.value.toString();
+      const call = merge({}, this.state.call, {
+        [field]: newDigitString
+      });
+      this.setState({call});
+    };
+  }
+
+
   updateDate(field){
     return e => {
       let date = e.currentTarget.value;
@@ -92,7 +103,7 @@ class Twilio extends React.Component {
           Send yourself a wake up call!
         </h1>
         <div>
-          <input type='number' className="telephoneInput" placeholder='111-222-3333' onChange={this.updatePhoneNumber('phoneNumber')}/>
+          <input type='number' className="telephoneInput" placeholder='111-222-3333' value={this.state.call.phoneNumber} onChange={this.updatePhoneNumberInput('phoneNumber')}/>
         </div>
         <ul>
             <button onClick={this.updatePhoneNumber('phoneNumber')} value={1}>
