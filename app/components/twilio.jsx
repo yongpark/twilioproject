@@ -18,7 +18,7 @@ class Twilio extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateDate = this.updateDate.bind(this);
     this.initialState = this.state.call;
-    this.reset = this.reset.bind(this);
+    this.reset = this.reset;
     this.makeCall = this.makeCall;
     this.timeOut = this.timeOut;
   }
@@ -38,7 +38,7 @@ class Twilio extends React.Component {
 
   updatePhoneNumber(field){
     return e => {
-      let newDigitString = e.target.value.toString();
+      let newDigitString = e.target.value;
       let numberString = this.state.call.phoneNumber;
       let newNumber = numberString + newDigitString;
       const call = merge({}, this.state.call, {
@@ -50,7 +50,7 @@ class Twilio extends React.Component {
 
   updatePhoneNumberInput(field){
     return e => {
-      let newDigitString = e.target.value.toString();
+      let newDigitString = e.target.value;
       const call = merge({}, this.state.call, {
         [field]: newDigitString
       });
@@ -125,40 +125,40 @@ class Twilio extends React.Component {
           </h1>
           <input type='text' className={styles.telephoneInput} placeholder={this.state.call.phoneNumber} value={this.state.call.phoneNumber} onChange={this.updatePhoneNumberInput('phoneNumber')}/>
           <div className={styles.keypad}>
-            <button className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={1}>
+            <button type='button' className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={'1'}>
               1
             </button>
-            <button className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={2}>
+            <button type='button' className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={'2'}>
               2
             </button>
-            <button className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={3}>
+            <button type='button' className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={'3'}>
               3
             </button>
-            <button className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={4}>
+            <button type='button' className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={'4'}>
               4
             </button>
-            <button className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={5}>
+            <button type='button' className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={'5'}>
               5
             </button>
-            <button className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={6}>
+            <button type='button' className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={'6'}>
               6
             </button>
-            <button className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={7}>
+            <button type='button' className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={'7'}>
               7
             </button>
-            <button className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={8}>
+            <button type='button' className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={'8'}>
               8
             </button>
-            <button className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={9}>
+            <button type='button' className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={'9'}>
               9
             </button>
-            <button className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={`*`}>
+            <button type='button' className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={`*`}>
               *
             </button>
-            <button className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={0}>
+            <button type='button' className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={'0'}>
               0
             </button>
-            <button className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={'#'}>
+            <button type='button' className={styles.key} onClick={this.updatePhoneNumber('phoneNumber')} value={'#'}>
               #
             </button>
           </div>
