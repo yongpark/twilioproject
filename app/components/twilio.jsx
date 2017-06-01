@@ -8,12 +8,6 @@ import styles from '../assets/styles/styles.scss';
 //   console.log(styles);
 // }, 5000);
 
-
-const accountSid = 'AC2a030dd4c2eefc7ace3f2f9c63495c74';
-const authToken = '5d5a3358a582439bac75aa3ac3c97e95';
-
-
-
 class Twilio extends React.Component {
   constructor(props){
     super(props);
@@ -106,12 +100,11 @@ class Twilio extends React.Component {
   }
 
   scheduleCall(call){
-    this.reset();
     let callState = call;
     let date = call.date;
     let currentDate = new Date();
     let timeDiff = date - currentDate;
-    this.props.fetchCalls().then((result) => this.setState({savedCalls: result.calls})).then(this.timeOut(callState, timeDiff));
+    this.props.fetchCalls().then((result) => this.setState({savedCalls: result.calls})).then(() => this.reset()).then(this.timeOut(callState, timeDiff));
   }
 
   reset(){
@@ -169,7 +162,7 @@ class Twilio extends React.Component {
               #
             </button>
           </div>
-          <input type='text' className={styles.messageInput} value={this.state.call.message} onChange={this.update('message')}/>
+          <input type='text' className={styles.messageInput} placeholder='Enter Wake Up Message' onChange={this.update('message')}/>
           <input className={styles.dateInput} type="time" onChange={this.updateTime('date')}/>
           <input className={styles.dateInput} type='date' onChange={this.updateDate('date')}/>
           <button className={styles.scheduleCall} type='submit'>Schedule Alarm</button>

@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const accountSid = 'AC2a030dd4c2eefc7ace3f2f9c63495c74';
 const authToken = '5d5a3358a582439bac75aa3ac3c97e95';
 const client = require('twilio')(accountSid, authToken);
+const favicon = require('serve-favicon');
 
 module.exports = {
   app: function () {
@@ -18,6 +19,7 @@ module.exports = {
 
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
+    app.use(favicon(__dirname + '/favicon-32x32.png'));
     app.use('/dist', publicPath);
     app.get('/', function (_, res) { res.sendFile(indexPath); });
     router.get('/', function(req, res) {
@@ -55,7 +57,7 @@ module.exports = {
             to: req.params.phoneNumber,
             from: '+14152125938',
           });
-    });    
+    });
 
     app.use('/api', router);
 

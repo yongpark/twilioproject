@@ -63,6 +63,10 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.messageInput::placeholder {
+  color: #ecf0f1;
+}
+
 .messageInput:focus{
   outline:none;
 }
