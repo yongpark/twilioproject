@@ -3,9 +3,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const Call = require('../app/model/call');
 const bodyParser = require('body-parser');
-const accountSid = 'AC2a030dd4c2eefc7ace3f2f9c63495c74';
-const authToken = '5d5a3358a582439bac75aa3ac3c97e95';
-const client = require('twilio')(accountSid, authToken);
+const client = require('twilio')(process.env.accountSid, process.env.authToken);
 const favicon = require('serve-favicon');
 
 module.exports = {
