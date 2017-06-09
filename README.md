@@ -2,7 +2,7 @@
 
 [Twilio Alarm Clock][twilio] is a simple web application that allows users to send themselves a wake up call with a customized message through a simple web interface. The Twilio Alarm Clock's is a flat design using Material UI colors with hover effects signifying areas where user input is possible. The application takes the user's input, saves it to the database, then retrieves it when the call is being made.
 
-Twilio Alarm Clock is a Yong Park's side project to learn Node.js and Express.js.
+Twilio Alarm Clock is a side project to learn Node.js and Express.js.
 
 ![Twilio Alarm Design][alarm]
 
@@ -18,7 +18,7 @@ Twilio Alarm Clock is a Yong Park's side project to learn Node.js and Express.js
 Twilio Alarm Clock is a single-page application built on Node.js and React.js with dependencies on the frontend and backend including Twilio, moment.js, and Mongoose.
 
 # Backend Technology
-Grocero runs on Node.js and is hosted on Heroku. The purpose of the backend is to provide a server to interact with the Twilio using RESTFUL APIs.
+Grocero runs on Node.js and is hosted on Heroku. The purpose of the backend is to provide a server to interact with Twilio using RESTFUL APIs.
 
 ## Database
 MLab's NoSQL Database is used for Heroku.
