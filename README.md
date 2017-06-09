@@ -13,10 +13,6 @@ Twilio Alarm Clock is a Yong Park's side project to learn Node.js and Express.js
 - Uses Twilio API to automate calling.
 - Utilizes TwiMl Bins to support customized call messages.
 
-## Project Design
-
-Twilio Alarm Clock was built in a few days.
-
 ## Technology
 
 Twilio Alarm Clock is a single-page application built on Node.js and React.js with dependencies on the frontend and backend including Twilio, moment.js, and Mongoose.
@@ -68,4 +64,4 @@ jQuery is used to make the AJAX requests with the Node.js server.
 - Make the site more mobile friendly.
 
 [twilio]: twilioalarm.herokuapp.com
-[alarm]: ./docs/images/alarm.png "Grocero Home page"
+[alarm]: ./docs/images/alarm.png
