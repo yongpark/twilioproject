@@ -35,6 +35,10 @@
   outline:none;
 }
 
+.key:hover{
+  background: #BDC5C6;
+}
+
 
 .telephoneInput{
   background: #2c3e50;
@@ -52,6 +56,10 @@
   outline:none;
 }
 
+.telephoneInput:hover{
+  background-color: #1F2B38;
+}
+
 .messageInput{
   background: #2c3e50;
   text-align: center;
@@ -62,6 +70,10 @@
   padding: 0.7em 0;
   font-weight: 300;
   font-family: 'Roboto', sans-serif;
+}
+
+.messageInput:hover{
+  background-color: #1F2B38;
 }
 
 .messageInput::placeholder {
@@ -84,6 +96,10 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.dateInput:hover{
+  background-color: #1F2B38;
+}
+
 .dateInput:focus{
   outline:none;
 }
@@ -104,4 +120,8 @@
 
 .scheduleCall:focus{
   outline:none;
+}
+
+.scheduleCall:hover{
+  background-color: #359745;
 }

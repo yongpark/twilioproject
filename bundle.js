@@ -11802,12 +11802,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-setTimeout(function () {
-  console.log(_styles2.default);
-}, 5000);
-
-var accountSid = 'AC2a030dd4c2eefc7ace3f2f9c63495c74';
-var authToken = '5d5a3358a582439bac75aa3ac3c97e95';
+// setTimeout(function () {
+//   console.log(styles);
+// }, 5000);
 
 var Twilio = function (_React$Component) {
   _inherits(Twilio, _React$Component);
@@ -11823,7 +11820,10 @@ var Twilio = function (_React$Component) {
     };
     _this.handleSubmit = _this.handleSubmit.bind(_this);
     _this.updateDate = _this.updateDate.bind(_this);
-
+    _this.initialState = _this.state.call;
+    _this.reset = _this.reset;
+    _this.makeCall = _this.makeCall;
+    _this.timeOut = _this.timeOut;
     return _this;
   }
 
@@ -11852,7 +11852,7 @@ var Twilio = function (_React$Component) {
       var _this4 = this;
 
       return function (e) {
-        var newDigitString = e.target.value.toString();
+        var newDigitString = e.target.value;
         var numberString = _this4.state.call.phoneNumber;
         var newNumber = numberString + newDigitString;
         var call = (0, _merge7.default)({}, _this4.state.call, _defineProperty({}, field, newNumber));
@@ -11865,7 +11865,7 @@ var Twilio = function (_React$Component) {
       var _this5 = this;
 
       return function (e) {
-        var newDigitString = e.target.value.toString();
+        var newDigitString = e.target.value;
         var call = (0, _merge7.default)({}, _this5.state.call, _defineProperty({}, field, newDigitString));
         _this5.setState({ call: call });
       };
@@ -11882,7 +11882,7 @@ var Twilio = function (_React$Component) {
         var day = date.slice(8, 10);
         var currentTime = _this6.state.call.date;
         currentTime.setYear(year);
-        currentTime.setMonth(month);
+        currentTime.setMonth(month - 1);
         currentTime.setDate(day);
         var call = (0, _merge7.default)({}, _this6.state.call, _defineProperty({}, field, currentTime));
         _this6.setState({ call: call });
@@ -11905,11 +11905,40 @@ var Twilio = function (_React$Component) {
       };
     }
   }, {
+    key: 'makeCall',
+    value: function makeCall() {
+      arguments[1](arguments[0]);
+    }
+  }, {
+    key: 'timeOut',
+    value: function timeOut() {
+      setTimeout(this.makeCall.bind(null, arguments[0], this.props.makeCall), arguments[1]);
+    }
+  }, {
+    key: 'scheduleCall',
+    value: function scheduleCall(call) {
+      var _this8 = this;
+
+      var callState = call;
+      var date = call.date;
+      var currentDate = new Date();
+      var timeDiff = date - currentDate;
+      this.props.fetchCalls().then(function (result) {
+        return _this8.setState({ savedCalls: result.calls });
+      }).then(function () {
+        return _this8.reset();
+      }).then(this.timeOut(callState, timeDiff));
+    }
+  }, {
+    key: 'reset',
+    value: function reset() {
+      this.setState({ call: this.initialState });
+    }
+  }, {
     key: 'handleSubmit',
     value: function handleSubmit(e) {
       e.preventDefault();
-      this.props.createCall(this.state.call);
-      this.props.makeCall(this.state.call);
+      this.props.createCall(this.state.call).then(this.scheduleCall(this.state.call));
     }
   }, {
     key: 'render',
@@ -11918,92 +11947,85 @@ var Twilio = function (_React$Component) {
         'div',
         null,
         _react2.default.createElement(
-          'h1',
-          null,
-          'Send yourself a wake up call!'
-        ),
-        _react2.default.createElement(
           'form',
           { onSubmit: this.handleSubmit, className: _styles2.default.container },
           _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement('input', { type: 'text', className: _styles2.default.telephoneInput, placeholder: this.state.call.phoneNumber, value: this.state.call.phoneNumber, onChange: this.updatePhoneNumberInput('phoneNumber') })
+            'h1',
+            { className: _styles2.default.header },
+            'Send yourself a wake up call!'
           ),
+          _react2.default.createElement('input', { type: 'text', className: _styles2.default.telephoneInput, placeholder: this.state.call.phoneNumber, value: this.state.call.phoneNumber, onChange: this.updatePhoneNumberInput('phoneNumber') }),
           _react2.default.createElement(
             'div',
             { className: _styles2.default.keypad },
             _react2.default.createElement(
               'button',
-              { className: _styles2.default.key, onClick: this.updatePhoneNumber('phoneNumber'), value: 1 },
+              { type: 'button', className: _styles2.default.key, onClick: this.updatePhoneNumber('phoneNumber'), value: '1' },
               '1'
             ),
             _react2.default.createElement(
               'button',
-              { className: _styles2.default.key, onClick: this.updatePhoneNumber('phoneNumber'), value: 2 },
+              { type: 'button', className: _styles2.default.key, onClick: this.updatePhoneNumber('phoneNumber'), value: '2' },
               '2'
             ),
             _react2.default.createElement(
               'button',
-              { className: _styles2.default.key, onClick: this.updatePhoneNumber('phoneNumber'), value: 3 },
+              { type: 'button', className: _styles2.default.key, onClick: this.updatePhoneNumber('phoneNumber'), value: '3' },
               '3'
             ),
             _react2.default.createElement(
               'button',
-              { className: _styles2.default.key, onClick: this.updatePhoneNumber('phoneNumber'), value: 4 },
+              { type: 'button', className: _styles2.default.key, onClick: this.updatePhoneNumber('phoneNumber'), value: '4' },
               '4'
             ),
             _react2.default.createElement(
               'button',
-              { className: _styles2.default.key, onClick: this.updatePhoneNumber('phoneNumber'), value: 5 },
+              { type: 'button', className: _styles2.default.key, onClick: this.updatePhoneNumber('phoneNumber'), value: '5' },
               '5'
             ),
             _react2.default.createElement(
               'button',
-              { className: _styles2.default.key, onClick: this.updatePhoneNumber('phoneNumber'), value: 6 },
+              { type: 'button', className: _styles2.default.key, onClick: this.updatePhoneNumber('phoneNumber'), value: '6' },
               '6'
             ),
             _react2.default.createElement(
               'button',
-              { className: _styles2.default.key, onClick: this.updatePhoneNumber('phoneNumber'), value: 7 },
+              { type: 'button', className: _styles2.default.key, onClick: this.updatePhoneNumber('phoneNumber'), value: '7' },
               '7'
             ),
             _react2.default.createElement(
               'button',
-              { className: _styles2.default.key, onClick: this.updatePhoneNumber('phoneNumber'), value: 8 },
+              { type: 'button', className: _styles2.default.key, onClick: this.updatePhoneNumber('phoneNumber'), value: '8' },
               '8'
             ),
             _react2.default.createElement(
               'button',
-              { className: _styles2.default.key, onClick: this.updatePhoneNumber('phoneNumber'), value: 9 },
+              { type: 'button', className: _styles2.default.key, onClick: this.updatePhoneNumber('phoneNumber'), value: '9' },
               '9'
             ),
             _react2.default.createElement(
               'button',
-              { className: _styles2.default.key, onClick: this.updatePhoneNumber('phoneNumber'), value: 0 },
+              { type: 'button', className: _styles2.default.key, onClick: this.updatePhoneNumber('phoneNumber'), value: '*' },
+              '*'
+            ),
+            _react2.default.createElement(
+              'button',
+              { type: 'button', className: _styles2.default.key, onClick: this.updatePhoneNumber('phoneNumber'), value: '0' },
               '0'
+            ),
+            _react2.default.createElement(
+              'button',
+              { type: 'button', className: _styles2.default.key, onClick: this.updatePhoneNumber('phoneNumber'), value: '#' },
+              '#'
             )
           ),
-          _react2.default.createElement(
-            'div',
-            { className: 'messageInputContainer' },
-            _react2.default.createElement(
-              'h3',
-              null,
-              'Enter Message'
-            ),
-            _react2.default.createElement('textarea', { className: 'messageInputArea', onChange: this.update('message') })
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'alarmTimerContainer' },
-            _react2.default.createElement('input', { type: 'time', onChange: this.updateTime('date') }),
-            _react2.default.createElement('input', { type: 'date', onChange: this.updateDate('date') })
-          ),
+          _react2.default.createElement('input', { type: 'text', className: _styles2.default.messageInput, placeholder: 'Enter Wake Up Message', onChange: this.update('message') }),
+          _react2.default.createElement('input', { className: _styles2.default.dateInput, type: 'time', onChange: this.updateTime('date') }),
+          _react2.default.createElement('input', { className: _styles2.default.dateInput, type: 'date', onChange: this.updateDate('date') }),
           _react2.default.createElement(
             'button',
-            { type: 'submit' },
-            'Submit'
+            { className: _styles2.default.scheduleCall, type: 'submit' },
+            'Schedule Alarm'
           )
         )
       );
@@ -12106,8 +12128,6 @@ var createCall = exports.createCall = function createCall(call) {
     type: 'POST',
     url: 'api/calls',
     data: { phoneNumber: call.phoneNumber, message: call.message, date: call.date }
-  }).then(function () {
-    return console.log(call);
   });
 };
 
@@ -12115,7 +12135,6 @@ var makeCall = exports.makeCall = function makeCall(call) {
   return _jquery2.default.ajax({
     type: 'GET',
     url: 'api/calls/' + call.phoneNumber + '/' + call.message
-
   });
 };
 
@@ -27905,19 +27924,21 @@ exports.default = TwilioReducer;
 
 exports = module.exports = __webpack_require__(250)(undefined);
 // imports
-
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700);", ""]);
 
 // module
-exports.push([module.i, "textarea:hover, input:hover, textarea:active, input:active, textarea:focus,\nbutton:focus, button:active, button:hover, label:focus, ._18uaSOU_9R35f3t3HpX9OT:active,\n._1xM92pZaKcgnn8iM6VUoC3 {\n  list-style: none; }\n\n._1vDMd7YN_wNMwAkPqBPwKd {\n  width: 400px;\n  background: #fff;\n  margin: 1em auto;\n  border-radius: 5px; }\n\n._3hIy2uJmLADk8b_qLyCaT4 {\n  width: 100%; }\n\n._2vqKTMinaxorb8p5C3YXbm {\n  color: #9FA7B4;\n  float: left;\n  width: 33.33%;\n  text-align: center;\n  padding: 1em;\n  font-size: 2em;\n  background: #ECF0F1;\n  border: 2px solid #EFF3F6;\n  border-bottom: none; }\n\n._44f3SnCGeqXbKwyW4TBWh {\n  background: #9FA7B4;\n  text-align: center;\n  padding: 0.7em 0;\n  color: #ECF0F1;\n  font-size: 2em; }\n", ""]);
+exports.push([module.i, "._3cYC6BrEl6eAQBaZKuv6ko {\n  text-align: center;\n  font-weight: 300;\n  font-family: 'Roboto', sans-serif; }\n\n._1vDMd7YN_wNMwAkPqBPwKd {\n  width: 400px;\n  background: #fff;\n  margin: auto;\n  border-radius: 5px;\n  font-family: 'Roboto', sans-serif; }\n\n._3hIy2uJmLADk8b_qLyCaT4 {\n  width: 100%; }\n\n._2vqKTMinaxorb8p5C3YXbm {\n  color: #2c3e50;\n  float: left;\n  width: 33.33%;\n  text-align: center;\n  padding: 1em;\n  font-size: 2em;\n  background: #ecf0f1;\n  border: 1.5px solid #EFF3F6;\n  font-weight: 300;\n  font-family: 'Roboto', sans-serif;\n  cursor: pointer; }\n\n._2vqKTMinaxorb8p5C3YXbm:focus {\n  outline: none; }\n\n._2vqKTMinaxorb8p5C3YXbm:active {\n  background: #BDC5C6; }\n\n._2vqKTMinaxorb8p5C3YXbm:hover {\n  background: #BDC5C6; }\n\n._44f3SnCGeqXbKwyW4TBWh {\n  background: #2c3e50;\n  text-align: center;\n  padding: 0.7em 0;\n  color: #ecf0f1;\n  font-size: 2em;\n  width: 100%;\n  border: none;\n  font-weight: 300;\n  font-family: 'Roboto', sans-serif; }\n\n._44f3SnCGeqXbKwyW4TBWh:focus {\n  outline: none; }\n\n._3rWF-6bLOZMAhqcL-o4Eg6 {\n  background: #2c3e50;\n  text-align: center;\n  color: #ecf0f1;\n  font-size: 2em;\n  width: 100%;\n  border: none;\n  padding: 0.7em 0;\n  font-weight: 300;\n  font-family: 'Roboto', sans-serif; }\n\n._3rWF-6bLOZMAhqcL-o4Eg6::placeholder {\n  color: #ecf0f1; }\n\n._3rWF-6bLOZMAhqcL-o4Eg6:focus {\n  outline: none; }\n\n.jjuivV0YJGs0YbtNs0FYt {\n  background: #2c3e50;\n  text-align: center;\n  color: #ecf0f1;\n  font-size: 2em;\n  width: 100%;\n  border: none;\n  padding: 0.7em 0;\n  font-weight: 300;\n  font-family: 'Roboto', sans-serif; }\n\n.jjuivV0YJGs0YbtNs0FYt:focus {\n  outline: none; }\n\n._2O_pv4bFafX0i3icnPTAkQ {\n  background: #4cd964;\n  text-align: center;\n  padding: 0.7em 0;\n  color: #ecf0f1;\n  font-size: 2em;\n  width: 100%;\n  border: none;\n  box-shadow: none;\n  border-radius: 0px;\n  font-weight: 300;\n  font-family: 'Roboto', sans-serif; }\n\n._2O_pv4bFafX0i3icnPTAkQ:focus {\n  outline: none; }\n", ""]);
 
 // exports
 exports.locals = {
-	"btn": "_18uaSOU_9R35f3t3HpX9OT",
-	"phoneFirstRow": "_1xM92pZaKcgnn8iM6VUoC3",
+	"header": "_3cYC6BrEl6eAQBaZKuv6ko",
 	"container": "_1vDMd7YN_wNMwAkPqBPwKd",
 	"keypad": "_3hIy2uJmLADk8b_qLyCaT4",
 	"key": "_2vqKTMinaxorb8p5C3YXbm",
-	"telephoneInput": "_44f3SnCGeqXbKwyW4TBWh"
+	"telephoneInput": "_44f3SnCGeqXbKwyW4TBWh",
+	"messageInput": "_3rWF-6bLOZMAhqcL-o4Eg6",
+	"dateInput": "jjuivV0YJGs0YbtNs0FYt",
+	"scheduleCall": "_2O_pv4bFafX0i3icnPTAkQ"
 };
 
 /***/ }),

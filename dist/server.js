@@ -13,7 +13,7 @@ module.exports = {
     const indexPath = path.join(__dirname, 'index.html');
     const publicPath = express.static(path.join(__dirname, '../dist'));
     //db config
-    mongoose.connect('mongodb://yongpark:mlabpassword@ds153501.mlab.com:53501/twilioalarm');
+    mongoose.connect(process.env.mongodb);
 
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
