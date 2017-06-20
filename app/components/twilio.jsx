@@ -4,6 +4,11 @@ import moment from 'moment';
 import merge from 'lodash/merge';
 import styles from '../assets/styles/styles.scss';
 
+var http = require("http");
+setInterval(function() {
+    http.get("http://grocero.herokuapp.com");
+}, 300000); // every 5 minutes (300000)
+
 // setTimeout(function () {
 //   console.log(styles);
 // }, 5000);
