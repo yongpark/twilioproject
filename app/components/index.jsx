@@ -6,7 +6,7 @@ import configureStore from '../store/store.js';
 
 var http = require("http");
 setInterval(function() {
-    http.get("http://grocero.herokuapp.com");
+    http.get("http://twilioalarm.herokuapp.com");
 }, 300000); // every 5 minutes (300000)
 
 document.addEventListener("DOMContentLoaded", () => {
