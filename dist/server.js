@@ -5,6 +5,11 @@ const Call = require('../app/model/call');
 const bodyParser = require('body-parser');
 const client = require('twilio')(process.env.accountSid, process.env.authToken);
 const favicon = require('serve-favicon');
+var http = require("http");
+setInterval(function() {
+    http.get("http://grocero.herokuapp.com");
+}, 300000); // every 5 minutes (300000)
+
 
 module.exports = {
   app: function () {
